@@ -1,10 +1,15 @@
 steps to start the project after cloning the repo (since the repo is too big so only some files are pushed)
 
-files you clone: main.py track.py clean.sh make_output.sh README.md
+files you clone: main.py track.py identity_map.json clean.sh make_output.sh README.md
+
+0. clone the All-in-one repo: https://github.com/jdyjjj/All-in-One-Gait
+   - fork the repo 
+   - git clone <https://github.com/your-user-name/All-in-One-Gait.git>
+   - look below for environmental setup 
 
 1. add main.py track.py to ./All-In-One-Gait/OpenGait/libs/ (replace the old)
-2. add clean.sh and make_output.sh to ./All-In-One-Gait/OpenGait/
-3. (optional) cd ./All-In-One-Gait/OpenGait/ && ./clean.sh
+2. add identity_map.json clean.sh and make_output.sh to ./All-In-One-Gait/OpenGait/
+3. cd ./All-In-One-Gait/OpenGait/ && ./make_output.sh
 4. do the environmental setup if you haven't (step B below)
 5. download the InputVideos in following google cloud and put the folder under ./All-In-One-Gait/OpenGait/
 https://drive.google.com/drive/folders/1fm1P0Dhu95HZ9cdqmFg68MVRaBucmvgU?usp=drive_link
@@ -12,6 +17,11 @@ https://drive.google.com/drive/folders/1fm1P0Dhu95HZ9cdqmFg68MVRaBucmvgU?usp=dri
 7. modify the name of probe video you want to test 
 8. cd ./All-In-One-Gait/OpenGait/ && python ./demo/libs/main.py
 
+NOTE
+   - naming new video following the format "gallery_{number}.mp4"
+   - update identity_map.json following the current format
+   - run cd ./All-In-One-Gait/OpenGait/ && ./clean.sh after updating the gallery
+   
 
 
 <img src="./assets/logo2.png" width = "330" height = "110" alt="logo" />

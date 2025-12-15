@@ -203,18 +203,19 @@ def writeresult(pgdict, video_path, video_save_folder, IDENTITY_MAP):
 
                     pid = "{}-{:03d}".format(video_name, track_id)
                     tid = pgdict[pid]
-                    tid = tid.split("-")[0].split("_")[0] + '-' + tid.split("-")[1]
+                    tid_map = IDENTITY_MAP[tid.split("-")[0]][tid.split("-")[1]]['name']
+                    # tid = tid.split("-")[0].split("_")[0] + '-' + tid.split("-")[1]
                     # demo
                     colorid = int(tid.split("-")[1])
                     # colorid = track_id
                     vertical = tlwh[2] / tlwh[3] > 1.6
                     if tlwh[2] * tlwh[3] > 10 and not vertical:
                         online_tlwhs.append(tlwh)
-                        online_ids.append(IDENTITY_MAP[tid]['name'])
+                        online_ids.append(tid_map)
                         online_colors.append(colorid)
                         online_scores.append(t.score)
                         results.append(
-                            f"{frame_id},{IDENTITY_MAP[tid]['name']},{tlwh[0]:.2f},{tlwh[1]:.2f},{tlwh[2]:.2f},{tlwh[3]:.2f},{t.score:.2f},-1,-1,-1\n"
+                            f"{frame_id},{tid_map},{tlwh[0]:.2f},{tlwh[1]:.2f},{tlwh[2]:.2f},{tlwh[3]:.2f},{t.score:.2f},-1,-1,-1\n"
                         )
                 timer.toc()
                 online_im = plot_track(
