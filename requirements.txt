@@ -1,0 +1,29 @@
+cython-bbox==0.1.3
+filelock
+filterpy
+h5py
+kornia
+lap
+loguru
+motmetrics
+ninja
+numpy
+onnx
+onnxoptimizer
+onnxruntime
+opencv-python<=4.6.0
+Pillow
+prettytable
+pyyaml >= 5.1
+scikit-image
+scikit-learn
+scipy
+tabulate
+tensorboard
+thop
+tqdm
+visualdl>=2.2.0
+# Updated to support Python 3.13
+torch>=2.5.0
+torchaudio>=2.5.0
+torchvision>=0.18.0
