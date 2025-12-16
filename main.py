@@ -55,16 +55,16 @@ def main():
             gallery_silhouette = seg(gallery_video_path, gallery_track_result, save_root+'/GaitSilhouette/')
         gallery_feat = extract_sil(gallery_silhouette, save_root+'/GaitFeatures/')
         
-        gallery_list_new = []
+        '''gallery_list_new = []
         for gallery_name, gallery_list in gallery_feat.items():
             for gallery_dict in gallery_list:
                 gallery_dict_new = {}
                 for gallery_index, gallery_detail in gallery_dict.items():
                     cur_id += 1
-                    new_key = f"{cur_id:04d}"
+                    new_key = f"{cur_id:03d}"
                     gallery_dict_new[new_key] = gallery_detail
                 gallery_list_new.append(gallery_dict_new)
-        gallery_feat = {gallery_name: gallery_list_new}
+        gallery_feat = {gallery_name: gallery_list_new}'''
 
         print ()
         print ("===============================")

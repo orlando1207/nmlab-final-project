@@ -1,0 +1,42 @@
+{
+    "gallery_1": {
+        "001": {
+        "name": "Sam Wu",
+        "Department": "Electrical Engineering",
+        "Year in school": "Junior",
+        "photo_url": "https://example.com/photos/sam_wu.jpg"
+        },
+        "002": {
+            "name": "Shiang Fu",
+            "Department": "Electrical Engineering",
+            "Year in school": "Junior",
+            "photo_url": "https://example.com/photos/shiang_fu.jpg"
+        },
+        "003": {
+            "name": "Yongxin Chen",
+            "Department": "Electrical Engineering",
+            "Year in school": "Senior",
+            "photo_url": "https://example.com/photos/yongxin_chen.jpg"
+        }
+    }, 
+    "gallery_2": {
+        "001": {
+            "name": "Yongxin Chen",
+            "Department": "Electrical Engineering",
+            "Year in school": "Senior",
+            "photo_url": "https://example.com/photos/yongxin_chen.jpg"
+        },
+        "002": {
+            "name": "Shiang Fu",
+            "Department": "Electrical Engineering",
+            "Year in school": "Junior",
+            "photo_url": "https://example.com/photos/shiang_fu.jpg"
+        },
+        "003": {
+            "name": "Sam Wu",
+            "Department": "Electrical Engineering",
+            "Year in school": "Junior",
+            "photo_url": "https://example.com/photos/sam_wu.jpg"
+        }
+    }
+}
