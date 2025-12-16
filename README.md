@@ -7,7 +7,7 @@ files you clone: main.py track.py identity_map.json clean.sh make_output.sh READ
    - git clone <https://github.com/your-user-name/All-in-One-Gait.git>
    - look below for environmental setup 
 
-1. add main.py track.py to ./All-In-One-Gait/OpenGait/libs/ (replace the old)
+1. add main.py track.py to ./All-In-One-Gait/OpenGait/demo/libs/ (replace the old)
 2. add identity_map.json clean.sh and make_output.sh to ./All-In-One-Gait/OpenGait/
 3. cd ./All-In-One-Gait/OpenGait/ && ./make_output.sh
 4. do the environmental setup if you haven't (step B below)
