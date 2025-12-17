@@ -1,0 +1,27 @@
+{
+  "gallery_001": {
+    "id": "gallery_001",
+    "name": "張三",
+    "photo": "/photos/person_001.jpg",
+    "department": "資訊工程系",
+    "student_id": "B12345678",
+    "email": "zhang.san@example.com"
+  },
+  "gallery_002": {
+    "id": "gallery_002",
+    "name": "李四",
+    "photo": "/photos/person_002.jpg",
+    "department": "電機工程系",
+    "student_id": "B87654321",
+    "email": "li.si@example.com"
+  },
+  "gallery_003": {
+    "id": "gallery_003",
+    "name": "王五",
+    "photo": "/photos/person_003.jpg",
+    "department": "機械工程系",
+    "student_id": "B11223344",
+    "email": "wang.wu@example.com"
+  }
+}
+
