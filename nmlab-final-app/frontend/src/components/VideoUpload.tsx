@@ -3,10 +3,10 @@
  */
 import { useState, useRef } from 'react';
 import { uploadVideo } from '../services/api';
-import type { RecognitionResult } from '../types';
+import type { RecognitionResponse } from '../types';
 
 interface VideoUploadProps {
-  onResult: (result: RecognitionResult) => void;
+  onResult: (result: RecognitionResponse) => void;
   onError: (error: string) => void;
 }
 

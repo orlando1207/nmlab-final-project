@@ -2,7 +2,7 @@
  * API 服務層
  */
 import axios from 'axios';
-import type { RecognitionResult, PersonInfo } from '../types';
+import type { RecognitionResponse, PersonInfo } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -17,12 +17,12 @@ const apiClient = axios.create({
 /**
  * 上傳影片並進行識別
  */
-export const uploadVideo = async (file: File): Promise<RecognitionResult> => {
+export const uploadVideo = async (file: File): Promise<RecognitionResponse> => {
   const formData = new FormData();
   formData.append('file', file);
 
   try {
-    const response = await apiClient.post<RecognitionResult>('/api/upload', formData, {
+    const response = await apiClient.post<RecognitionResponse>('/api/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -39,6 +39,13 @@ export const uploadVideo = async (file: File): Promise<RecognitionResult> => {
     }
     throw error;
   }
+};
+
+/**
+ * 取得處理過的影片 URL
+ */
+export const getProcessedVideoUrl = (filename: string): string => {
+  return `${API_BASE_URL}/api/video/${filename}`;
 };
 
 /**

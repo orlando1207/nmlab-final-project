@@ -11,21 +11,26 @@ interface PersonCardProps {
 export const PersonCard: React.FC<PersonCardProps> = ({ personInfo }) => {
   const [imageError, setImageError] = useState(false);
 
+  // 處理照片 URL（支援多種欄位名稱）
+  const photoUrl = personInfo.photo_url || personInfo.photo || '';
+  const department = personInfo.Department || personInfo.department || '';
+  const yearInSchool = personInfo.Year_in_school || personInfo.Year_in_school || '';
+
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">
-      <div className="flex flex-col items-center">
+    <div className="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow border border-gray-200">
+      <div className="flex flex-row items-start gap-4">
         {/* 照片 */}
-        <div className="w-32 h-32 bg-gray-200 rounded-full mb-4 flex items-center justify-center overflow-hidden">
-          {personInfo.photo && !imageError ? (
+        <div className="w-20 h-20 bg-gray-200 rounded-full flex-shrink-0 flex items-center justify-center overflow-hidden">
+          {photoUrl && !imageError ? (
             <img
-              src={personInfo.photo}
+              src={photoUrl}
               alt={personInfo.name}
               className="w-full h-full object-cover"
               onError={() => setImageError(true)}
             />
           ) : (
             <svg
-              className="w-16 h-16 text-gray-400"
+              className="w-10 h-10 text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -40,39 +45,33 @@ export const PersonCard: React.FC<PersonCardProps> = ({ personInfo }) => {
           )}
         </div>
 
-        {/* 姓名 */}
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">{personInfo.name}</h2>
+        {/* 資訊區域 */}
+        <div className="flex-1 min-w-0">
+          {/* 姓名 */}
+          <h2 className="text-lg font-bold text-gray-800 mb-2">{personInfo.name}</h2>
 
-        {/* 其他資訊 */}
-        <div className="w-full space-y-2 mt-4">
-          {personInfo.student_id && (
-            <div className="flex justify-between items-center py-2 border-b border-gray-200">
-              <span className="text-gray-600 font-medium">學號:</span>
-              <span className="text-gray-800">{personInfo.student_id}</span>
+          {/* 其他資訊 */}
+          <div className="space-y-1.5">
+            {department && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-sm">系所:</span>
+                <span className="text-gray-800 text-sm">{department}</span>
+              </div>
+            )}
+
+            {yearInSchool && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-sm">年級:</span>
+                <span className="text-gray-800 text-sm">{yearInSchool}</span>
+              </div>
+            )}
+
+            <div className="flex items-center gap-2 pt-1 border-t border-gray-200">
+              <span className="text-gray-500 text-xs font-mono">{personInfo.gallery_id}/{personInfo.person_id}</span>
             </div>
-          )}
-
-          {personInfo.department && (
-            <div className="flex justify-between items-center py-2 border-b border-gray-200">
-              <span className="text-gray-600 font-medium">系所:</span>
-              <span className="text-gray-800">{personInfo.department}</span>
-            </div>
-          )}
-
-          {personInfo.email && (
-            <div className="flex justify-between items-center py-2 border-b border-gray-200">
-              <span className="text-gray-600 font-medium">Email:</span>
-              <span className="text-gray-800">{personInfo.email}</span>
-            </div>
-          )}
-
-          <div className="flex justify-between items-center py-2">
-            <span className="text-gray-600 font-medium">ID:</span>
-            <span className="text-gray-800 font-mono text-sm">{personInfo.id}</span>
           </div>
         </div>
       </div>
     </div>
   );
 };
-

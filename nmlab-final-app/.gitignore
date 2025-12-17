@@ -41,6 +41,10 @@ dist-ssr/
 backend/data/uploads/*
 !backend/data/uploads/.gitkeep
 
+# Processed Videos
+backend/data/processed/*.mp4
+!backend/data/processed/.gitkeep
+
 # OS
 .DS_Store
 Thumbs.db

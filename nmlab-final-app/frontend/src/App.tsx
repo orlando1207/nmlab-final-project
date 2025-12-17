@@ -4,14 +4,14 @@
 import { useState } from 'react';
 import { VideoUpload } from './components/VideoUpload';
 import { ResultDisplay } from './components/ResultDisplay';
-import type { RecognitionResult } from './types';
+import type { RecognitionResponse } from './types';
 
 function App() {
-  const [result, setResult] = useState<RecognitionResult | null>(null);
+  const [result, setResult] = useState<RecognitionResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleResult = (recognitionResult: RecognitionResult) => {
-    setResult(recognitionResult);
+  const handleResult = (recognitionResponse: RecognitionResponse) => {
+    setResult(recognitionResponse);
     setError(null);
   };
 
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* 標題 */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2">

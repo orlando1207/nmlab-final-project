@@ -2,10 +2,11 @@
  * 結果顯示元件
  */
 import { PersonCard } from './PersonCard';
-import type { RecognitionResult } from '../types';
+import { getProcessedVideoUrl } from '../services/api';
+import type { RecognitionResponse } from '../types';
 
 interface ResultDisplayProps {
-  result: RecognitionResult | null;
+  result: RecognitionResponse | null;
   error: string | null;
 }
 
@@ -37,17 +38,50 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, error }) =
     return null;
   }
 
+  // 從 URL 中提取檔案名稱
+  const videoFilename = result.processed_video_url.split('/').pop() || '';
+  const videoUrl = getProcessedVideoUrl(videoFilename);
+
   return (
     <div className="mt-8">
-      <div className="mb-4 text-center">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">識別結果</h3>
+      <div className="mb-6 text-center">
+        <h3 className="text-2xl font-bold text-gray-800 mb-2">識別結果</h3>
         <p className="text-sm text-gray-600">
-          Probe ID: <span className="font-mono">{result.probe_id}</span> → Gallery ID:{' '}
-          <span className="font-mono">{result.gallery_id}</span>
+          檢測到 <span className="font-semibold text-blue-600">{result.total_detected}</span> 個人
         </p>
       </div>
-      <PersonCard personInfo={result.person_info} />
+
+      {/* 影片和人物卡片並排顯示 */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* 處理過的影片 - 左側 */}
+        <div className="bg-white rounded-lg shadow-lg p-4 lg:p-6">
+          <h4 className="text-lg font-semibold text-gray-800 mb-4">處理過的影片</h4>
+          <div className="w-full">
+            <video
+              controls
+              className="w-full rounded-lg max-h-[500px] object-contain"
+              src={videoUrl}
+            >
+              您的瀏覽器不支援影片播放
+            </video>
+          </div>
+        </div>
+
+        {/* 識別結果列表 - 右側 */}
+        <div className="bg-white rounded-lg shadow-lg p-4 lg:p-6">
+          <h4 className="text-lg font-semibold text-gray-800 mb-4">
+            識別到的人員 ({result.recognition_results.length})
+          </h4>
+          <div className="space-y-4 max-h-[500px] overflow-y-auto">
+            {result.recognition_results.map((personInfo, index) => (
+              <PersonCard 
+                key={`${personInfo.gallery_id}-${personInfo.person_id}-${index}`} 
+                personInfo={personInfo} 
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
-

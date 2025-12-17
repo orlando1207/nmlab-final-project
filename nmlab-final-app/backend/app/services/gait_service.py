@@ -5,7 +5,7 @@ Gait 系統整合服務
 import sys
 import importlib.util
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Tuple, List, Dict, Optional
 
 # 計算 gait 模組路徑
 project_root = Path(__file__).parent.parent.parent.parent
@@ -44,16 +44,18 @@ class GaitService:
     """Gait 系統服務類別"""
     
     @staticmethod
-    def process_video(video_path: str, probe_id: str) -> Dict[str, str]:
+    def process_video(video_path: str, probe_id: str) -> Tuple[str, List[Dict]]:
         """
-        處理影片並回傳識別結果
+        處理影片並回傳處理過的影片路徑和識別結果
         
         Args:
             video_path: 影片檔案路徑
             probe_id: Probe 識別碼
             
         Returns:
-            dict: {probe_id: gallery_id} 格式的識別結果
+            tuple: (processed_video_path, recognition_results)
+                - processed_video_path: 處理過的影片檔案路徑
+                - recognition_results: 識別結果列表，每個元素包含個人資訊
         """
         try:
             # 動態載入模組
