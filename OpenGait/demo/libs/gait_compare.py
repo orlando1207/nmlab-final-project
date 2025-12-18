@@ -16,7 +16,7 @@ def computedistence(x, y):
     cosine_distance = 1.0 - cosine_sim
     # sigmoid(k * (x - center)) >[0,1]
     k = 20.0
-    center = 0.028
+    center = 0.029
     scaled_distance = torch.sigmoid(k * (cosine_distance - center))
     distance = scaled_distance
 
