@@ -81,17 +81,14 @@ def comparefeat(embs, gallery_feat: dict, pid, threshold_value):
                         min = distance.float()
     dic_sort= sorted(dic.items(), key=lambda d:d[1], reverse = False)
     
-    # 檢查最佳匹配是否超過閾值
     if id is None:
         print("############## no person detected in probe #####################")
-        print(f"distance {min:.4f} exceeds the threshold {threshold_value}")
         return "NOT_IN_DATABASE", dic_sort
     elif min >= threshold_value:
         print(f"############## Best match distance {min:.4f} exceeds threshold {threshold_value} #####################")
         print(f"Top 5 matches: {[(gid, f'{dist.item():.6f}') for gid, dist in dic_sort[:5]]}")
         return "NOT_IN_DATABASE", dic_sort
     
-    # 顯示詳細的匹配信息用於調試
     print(f"\n✅ Match found: {id}")
     print(f"   Distance: {min:.6f}")
     print(f"   Top 5 candidates:")
